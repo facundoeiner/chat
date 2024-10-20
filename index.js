@@ -5,7 +5,7 @@ import {createServer} from 'node:http';
 import dotenv from 'dotenv';
 dotenv.config();
 import { createClient} from "@libsql/client";
-const port = process.env.PORT ?? 3000; // Cambia 3000 por 3001
+const port =  process.env.PORT || 4000;// Cambia 3000 por 3001
 
 console.log(process.cwd()+"/index.html");
 const app=express();
