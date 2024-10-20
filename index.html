@@ -12,6 +12,9 @@
                 serverOffset:0
             }
         }) ;
+        socket.on('user connected', (message) => {
+            alert(message);
+        });
         const form = document.getElementById('form');
         const input=document.getElementById('input');
         const contMsg=document.querySelector('.cont-msg');

@@ -42,16 +42,21 @@ const db= createClient({
     )  
     
 `)
-const userColors = {}; 
+const userColors = []; 
+const idus=[]
 
 io.on('connection',async (socket)=>{
     console.log("a user has connected!" , socket.id);
+    socket.broadcast.emit('user connected', 'Un nuevo usuario se ha conectado');
     if (!userColors[socket.id]) {
+        
         userColors[socket.id] = `#${Math.floor(Math.random() * 16777215).toString(16)}`; // Color aleatorio
     }
     const userColor = userColors[socket.id]; 
+    console.log()
     socket.on('disconnect',()=>{
         console.log('an user has disconnected')
+        
     });
     socket.on('chat message',async(msg)=>{
        let resut;
