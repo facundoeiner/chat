@@ -31,6 +31,7 @@ const io=new Server(server,{
 const db= createClient({
     url:'libsql://sweet-jolt-facu.turso.io',
     authToken: process.env.DB_TOKEN
+
 })
 
  await db.execute(`
@@ -58,6 +59,7 @@ io.on('connection',async (socket)=>{
         
     });
     socket.on('chat message',async(msg)=>{
+   
        let resut;
        try{
         resut=await db.execute({
@@ -71,8 +73,10 @@ io.on('connection',async (socket)=>{
        }
         io.emit('chat message',msg, resut.lastInsertRowid.toString(),userColor);  
     })
-    console.log('auth');
-    console.log(socket.handshake.auth);
+    socket.on('mensaje', (msg) => {
+        // Emitir evento de 'nuevo_mensaje' a todos los clientes
+        io.emit('nuevo_mensaje', msg);
+    });
     if(!socket.recovered){ //recuperar los msj sin conexion
         try{
             const result= await db.execute({

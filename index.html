@@ -6,7 +6,25 @@
     <title>chat</title>
     <link rel="stylesheet" href="style.css">
     <script type="module">
-        import {io} from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
+       function solicitarPermisoNotificacion() {
+            if (Notification.permission === 'default') {
+                console.log('dentro del if')
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        console.log('Permiso para notificaciones concedido');
+                    }
+                });
+            }
+            console.log('fuera del if ')
+        }
+
+        // Llamar esta función cuando se cargue la página
+        solicitarPermisoNotificacion();
+
+ 
+  
+       
+       import {io} from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
         const socket=io({
             auth:{
                 serverOffset:0
@@ -36,7 +54,26 @@
             contMsg.appendChild(div);
             socket.auth.serverOffset=serverOffset;
             contMsg.scrollTop=contMsg.scrollHeight;
+
         })
+
+        function mostrarNotificacion(titulo, mensaje) {
+                if (Notification.permission === 'granted') {
+                    const notificacion = new Notification(titulo, {
+                        body: mensaje,
+                        icon: 'icono.png'  // Icono opcional
+                    });
+
+                    // Acciones al hacer clic en la notificación
+                    notificacion.onclick = () => {
+                        window.focus();  // Llevar la pestaña al frente
+                    };
+                }
+            }
+
+        socket.on('nuevo_mensaje', (mensaje) => {
+                mostrarNotificacion('Nuevo mensaje', mensaje);
+        });
     
     </script>
 </head>

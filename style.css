@@ -40,6 +40,7 @@ main {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
+   
 }
 footer {
     /* padding: 20px; */
@@ -72,5 +73,9 @@ button {
 button:hover {
     background-color: #357ABD;
 }
-
-
+@media screen and (max-width:600px) {
+    .chat-container :last-child{
+        margin-bottom: 35px;
+     
+    }
+}
