@@ -19,7 +19,7 @@
         }
 
         // Llamar esta función cuando se cargue la página
-        solicitarPermisoNotificacion();
+        // solicitarPermisoNotificacion();
 
  
   
@@ -57,110 +57,11 @@
 
         })
 
-        function mostrarNotificacion(titulo, mensaje) {
-                if (Notification.permission === 'granted') {
-                    const notificacion = new Notification(titulo, {
-                        body: mensaje,
-                        icon: 'icono.png'  // Icono opcional
-                    });
-
-                    // Acciones al hacer clic en la notificación
-                    notificacion.onclick = () => {
-                        window.focus();  // Llevar la pestaña al frente
-                    };
-                }
-            }
-
-        socket.on('nuevo_mensaje', (mensaje) => {
-                mostrarNotificacion('Nuevo mensaje', mensaje);
-        });
+   
     
     </script>
 </head>
-<style>
-    /* *{
-        box-sizing: border-box;
-    }
-    :root{
-        color-scheme:light dark ;
-    }
-    body{
-        font-family: sans-serif;
-        display: grid;
-        place-content: center;
-        height: 100vh;
-        padding: 38px;
-        grid-template-rows: 1fr;
-        width: 100%;
-        grid-auto-columns: 1fr;
-        
 
-    }
-    #chat{
-        border: 2px solid gray  ;
-        border-radius: 4px;
-        overflow: hidden;
-        height: 100%;
-        position: relative;
-        width: 100%;
-        width: 300px;
-
-
-    }
-    #form{
-        bottom: 0;
-        display: flex;
-        height: 48px;
-        left: 0;
-        padding: 4px;
-        position: absolute;
-     
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    #input{
-        border-radius: 9999px !important;
-        border: 1px solid #eee !important;
-    
-    }
-    #form > button{
-        background-color: #09f;
-        color: #fff;
-        border: 0;
-        margin: 4px;
-        border-radius: 4px;
-    }
-    #form> button:hover{
-        background-color: #0cf;
-
-
-    }
-    #chat{
-     
-      width: 100%;
-    }
-    .cont-msg{
-    
-        width: 100%;
-        display: grid;
-        height: 90%;
-        overflow-y: auto;
-        grid-auto-rows:minmax(min-content,max-content);
-        gap: 5px;
-    }
-    .msg{
-        margin: 5px;
-        background: rgba(6, 97, 158, 0.641);
-        border-radius: 6px;
-        padding: 5px;
-        min-height: 50px;
-      
-     
-    }
-    .cont-msg > .msg:nth-child(odd){
-        background: rgba(3, 156, 3, 0.251);
-    } */
-</style>
 <body>
     <div class="contenedor">   
 

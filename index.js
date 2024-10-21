@@ -73,10 +73,7 @@ io.on('connection',async (socket)=>{
        }
         io.emit('chat message',msg, resut.lastInsertRowid.toString(),userColor);  
     })
-    socket.on('mensaje', (msg) => {
-        // Emitir evento de 'nuevo_mensaje' a todos los clientes
-        io.emit('nuevo_mensaje', msg);
-    });
+
     if(!socket.recovered){ //recuperar los msj sin conexion
         try{
             const result= await db.execute({
