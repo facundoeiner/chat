@@ -31,7 +31,6 @@ const io=new Server(server,{
 const db= createClient({
     url:'libsql://sweet-jolt-facu.turso.io',
     authToken: process.env.DB_TOKEN
-    // authToken:'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3Mjk0NDM0MTUsImlkIjoiZmM4M2Y1OTEtZjFlMS00OGQ0LThlMjMtMzhjM2FmOTcwMTE3In0.iYCIONRp3NJuOto4QWVhJ3J9fFBkhhTnoaqPKfp1KGKwKZiiYIutrwZv3bMp9jH3JQ3QGZVbqvUnvv__Qp5rDA'
 })
 
  await db.execute(`
